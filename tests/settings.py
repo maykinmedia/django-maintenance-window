@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sites",
+    "django.contrib.messages",
+    "django.contrib.admin",
     "solo",
     "django_maintenance_window",
     "tests",
