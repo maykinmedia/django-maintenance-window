@@ -49,6 +49,11 @@ class MaintenanceModeMiddleware:
         if settings.MAINTENANCE_EXCLUDE_STAFF_USER and request.user and request.user.is_staff:
             skip_maintenance = True
 
+        for exclude_url in settings.MAINTENANCE_EXCLUDE_URLS:
+            if request.path.startswith(exclude_url):
+                skip_maintenance = True
+                break
+
         if not skip_maintenance:
             kwargs = {
                 'end_date': config.maintenance_until,

@@ -106,3 +106,15 @@ class MiddleWareTests(TestCase):
         admin_url = reverse("admin:index")
         response = self.client.get(admin_url)
         self.assertEqual(response.status_code, 503)
+
+    @override_settings(MAINTENANCE_EXCLUDE_URLS=["/accounts"])
+    def test_excluded_urls(self):
+        config = MaintenanceMode.get_solo()
+        config.maintenance = True
+        config.save()
+
+        self.client.force_login(self.superuser)
+
+        url = reverse("two-factor")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)

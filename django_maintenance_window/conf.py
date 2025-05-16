@@ -27,5 +27,9 @@ class Settings:
     def MAINTENANCE_EXCLUDE_STAFF_USER(self):
         return getattr(django_settings, "MAINTENANCE_EXCLUDE_STAFF_USER", False)
 
+    @property
+    def MAINTENANCE_EXCLUDE_URLS(self):
+        return getattr(django_settings, "MAINTENANCE_EXCLUDE_URLS", [])
+
 
 settings = Settings()
