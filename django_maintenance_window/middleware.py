@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import django
 from django.urls import reverse
 from django.shortcuts import render
 from django.utils.cache import add_never_cache_headers
 
-from . import settings
+from .conf import settings
 from .models import MaintenanceMode
 
 
